@@ -1,5 +1,8 @@
 # A sample Python project
 
+![PyPI](https://img.shields.io/badge/dynamic/json?label=test%20PyPI&query=info.version&url=https%3A%2F%2Ftest.pypi.org%2Fpypi%2Fexample-package-daemo%2Fjson&style=plastic)
+![Codecov](https://img.shields.io/codecov/c/github/Daemo00/packaging_tutorial?style=plastic)
+
 ![Python Logo](https://www.python.org/static/community_logos/python-logo.png "Sample inline image")
 
 A sample project that exists as an aid to the [Python Packaging User
