@@ -1,17 +1,31 @@
-name: Release
+name: Build and Publish
 
 on:
-  workflow_run:
-    workflows: [ Check packaging ]
-    types: [ completed ]
+  push:
     branches:
       - main
+    tags:
+      - '*'
 
 jobs:
+  # Always check packaging
+  check-packaging:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Install build dependencies
+      run: pip install build twine
+    - name: Build
+      run: python -m build .
+    - name: Check build
+      run: python -m twine check dist/*
+  # Publish only on tags
   build-and-publish:
-    if: >-
-      github.ref_type == 'tag' &&
-      github.event.workflow_run.conclusion == 'success'
+    needs: check-packaging
+    if: github.ref_type == 'tag'
     runs-on: ubuntu-latest
     environment:
       name: testpypi
