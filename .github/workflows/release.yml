@@ -6,9 +6,13 @@ on:
       - main
     tags:
       - '*'
+  workflow_run:
+    workflows: [ Check packaging ]
+    types: [ completed ]
+
 jobs:
   build-and-publish:
-    if: github.ref_type == 'tag'
+    if: github.ref_type == 'tag' && ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     environment:
       name: testpypi
