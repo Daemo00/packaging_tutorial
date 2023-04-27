@@ -1,14 +1,11 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
-    tags:
-      - '*'
   workflow_run:
     workflows: [ Check packaging ]
     types: [ completed ]
+    branches:
+      - main
 
 jobs:
   build-and-publish:
