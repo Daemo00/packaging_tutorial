@@ -46,7 +46,7 @@ test = [
 "Source" = "https://github.com/Daemo00/packaging_tutorial"
 
 [project.scripts]
-sample = "sample:main"
+add_number = "sample:cli.main"
 
 [tool.setuptools]
 package-data = {sample = ["*.dat"]}
