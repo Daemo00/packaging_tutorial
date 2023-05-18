@@ -30,3 +30,8 @@ repos:
     rev: v2.4.0
     hooks:
     -   id: add-trailing-comma
+-   repo: https://github.com/dosisod/refurb
+    rev: v1.16.0
+    hooks:
+      - id: refurb
+        name: Refurb
